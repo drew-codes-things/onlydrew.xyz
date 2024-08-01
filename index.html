@@ -45,28 +45,6 @@
         .social-links img:hover {
             transform: scale(1.2);
         }
-        .song-suggest {
-            margin-top: 20px;
-        }
-        .song-suggest input[type="text"] {
-            width: 70%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 2px solid #FF69B4;
-            border-radius: 5px;
-        }
-        .song-suggest input[type="submit"] {
-            background-color: #FF69B4;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .song-suggest input[type="submit"]:hover {
-            background-color: #FF1493;
-        }
     </style>
 </head>
 <body>
@@ -108,15 +86,10 @@
                 <a href="https://www.youtube.com/channel/UCetjAEAeb773xck1AAJmvUQ" target="_blank">
                     <img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Youtube_colored_svg-512.png" alt="YouTube">
                 </a>
+                <a href="mailto:starlover@starlover.online" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/281/281769.png" alt="Gmail">
+                </a>
             </div>
-        </div>
-
-        <div class="section">
-            <h2><span class="kawaii-icon">🎵</span>Suggest a Spotify Song</h2>
-            <form class="song-suggest" action="https://formspree.io/f/mrbzqazr" method="POST">
-                <input type="text" name="song_suggest" placeholder="Enter Spotify song name or link" required>
-                <input type="submit" value="Send Suggestion">
-            </form>
         </div>
     </div>
 </body>
