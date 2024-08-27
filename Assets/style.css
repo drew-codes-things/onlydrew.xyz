@@ -30,7 +30,7 @@ header::before {
 }
 h1 {
     font-family: 'Playfair Display', serif;
-    color: #ff79c6;
+    color: #ff4d6d;
     font-size: 3.5rem;
     margin: 0;
     position: relative;
@@ -70,12 +70,12 @@ h2 {
     transform: translateY(-5px);
 }
 a {
-    color: #ff79c6;
+    color: #ff4d6d;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 a:hover {
-    color: #f8a5c2;
+    color: #ff6f91;
 }
 p {
     margin-bottom: 15px;
