@@ -1,5 +1,14 @@
-# Starlover
+# Brochure
 
-A site for me so others can have a good look at who i am and my personality :3
+- My website is deployed here: [here](https://starlover.online), feel free to check it out!
 
-!!
+# Information
+- About me
+- Interests
+- Socials
+- Code plans
+
+# Inquiries 
+- You can contact me via: ``starlover@starlover.online`` 
+
+
