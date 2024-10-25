@@ -80,3 +80,23 @@ a:hover {
 p {
     margin-bottom: 15px;
 }
+.subdomain-button {
+    display: inline-block;
+    background-color: #8b0000;
+    color: #f0f0f0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px 30px;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.subdomain-button:hover {
+    background-color: #a52a2a;
+    transform: translateY(-3px);
+}
+
