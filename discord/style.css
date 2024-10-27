@@ -12,7 +12,7 @@ body {
     padding: 40px 20px;
 }
 header {
-    background-image: url('banner.png');
+    background-image: url('Assets/banner.png');
     background-size: cover;
     background-position: center;
     padding: 50px 0;
@@ -37,6 +37,23 @@ h1 {
     margin: 0;
     position: relative;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.home-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #8b0000;
+    color: #f0f0f0;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #a52a2a;
+    transform: translateY(-3px);
 }
 
 .catalog-list {
