@@ -55,6 +55,21 @@ h1 {
     background-color: #a52a2a;
     transform: translateY(-3px);
 }
+.subdomain-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #8b0000; /* Button color */
+    color: #f0f0f0; /* Text color */
+    font-size: 1.2rem;
+    text-decoration: none; /* No underline */
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.subdomain-button:hover {
+    background-color: #a52a2a; /* Darker color on hover */
+    transform: translateY(-3px); /* Lift effect */
+}
 .catalog-list {
     display: flex;
     flex-wrap: wrap;
