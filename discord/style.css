@@ -5,13 +5,16 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    text-align: center;
 }
+
 .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 40px 20px;
 }
-header {
+
+.banner {
     background-image: url('Assets/banner.png');
     background-size: cover;
     background-position: center;
@@ -20,8 +23,13 @@ header {
     position: relative;
     width: 100%;
     margin: 0 0 30px 0;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-header::before {
+
+.banner::before {
     content: '';
     position: absolute;
     top: 0;
@@ -31,40 +39,55 @@ header::before {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
+
+.banner .container {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
 h1 {
     font-family: 'Playfair Display', serif;
     color: #8b0000;
     font-size: 3rem;
-    margin: 0;
-    position: relative;
+    margin: 0 0 20px 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    z-index: 2;
 }
+
 .home-button {
     display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
+    padding: 12px 30px;
     background-color: #8b0000;
     color: #f0f0f0;
     font-size: 1.2rem;
     text-decoration: none;
     border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-weight: bold;
+    cursor: pointer;
 }
+
 .home-button:hover {
     background-color: #a52a2a;
     transform: translateY(-3px);
+    border-color: #f0f0f0;
+    color: #f0f0f0;
 }
+
 .catalog-list {
     display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 100%;
+    gap: 20px;
     flex-wrap: wrap;
-    gap: 20px; 
-    justify-content: flex-start; 
 }
 
 .catalog-entry {
-    flex: 1 1 30%; 
-    max-width: 30%; 
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,16 +103,22 @@ h1 {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-
 .catalog-preview {
     width: 100%;
     max-width: 300px;
+    height: 150px;
+    object-fit: cover;
     border-radius: 8px;
     margin-bottom: 20px;
 }
 
 .catalog-info {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    width: 100%;
 }
 
 .catalog-info h2 {
@@ -104,21 +133,27 @@ h1 {
     color: #f0f0f0;
     margin-bottom: 15px;
     font-size: 1rem;
+    flex-grow: 1;
+}
+
+.button-container {
+    width: 100%;
+    padding: 10px 0;
 }
 
 .catalog-link {
-    display: inline-block;
     background-color: #8b0000;
     color: #f0f0f0;
     font-size: 1.2rem;
     font-weight: bold;
-    padding: 15px 30px;
-    margin-top: 20px;
+    padding: 15px 20px;
     border-radius: 8px;
     text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    position: relative;
-    z-index: 1;
+    transition: all 0.3s ease;
+    display: inline-block;
+    width: calc(100% - 40px);
+    min-height: 50px;
+    line-height: 1.4;
 }
 
 .catalog-link:hover {
@@ -127,28 +162,29 @@ h1 {
     color: #f0f0f0;
 }
 
-h2 {
-    font-family: 'Playfair Display', serif;
-    color: #8be9fd;
-    font-size: 2rem;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #8be9fd;
-    padding-bottom: 10px;
-}
-
 @media (max-width: 768px) {
     h1 {
         font-size: 2.5rem;
     }
 
-    header {
-        height: 250px;
+    .banner {
+        min-height: 250px;
+    }
+    
+    .home-button {
+        font-size: 1rem;
+        padding: 10px 20px;
     }
 
     .catalog-link {
         font-size: 1rem;
-        padding: 12px 24px;
+        padding: 12px 20px;
+        min-height: 45px;
+    }
+    
+    .catalog-entry {
+        flex: 1 1 calc(50% - 20px);
+        min-width: 200px;
     }
 }
 
@@ -157,11 +193,16 @@ h2 {
         font-size: 2rem;
     }
 
-    header {
-        height: 200px;
+    .banner {
+        min-height: 200px;
     }
 
     .container {
         padding: 20px;
+    }
+
+    .catalog-entry {
+        flex: 1 1 100%;
+        min-width: 0;
     }
 }
