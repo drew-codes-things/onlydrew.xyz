@@ -34,12 +34,16 @@ header::before {
 }
 
 h1 {
-    font-family: 'Playfair Display', serif;
-    color: #8b0000;
+    font-family: 'Bona Nova SC', serif;
+    color: #8be9fd;
     font-size: 3rem;
     margin: 0;
     position: relative;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: -1px -1px 0 #000000,  
+                 1px -1px 0 #000000,
+                 -1px 1px 0 #000000,
+                 1px 1px 0 #000000,
+                 2px 2px 4px rgba(0, 0, 0, 0.5);
     z-index: 2;
 }
 
