@@ -8,5 +8,5 @@
 - Included there is a brief about me section explaining some of my interests
 
 # Inquiries 
-- You can contact me via: ``starlover@starlover.online`` 
+- You can contact me via: ``support@starlover.online`` 
 
