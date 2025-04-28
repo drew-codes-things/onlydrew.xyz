@@ -6,11 +6,13 @@ body {
     padding: 0;
     line-height: 1.6;
 }
+
 .container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
 }
+
 header {
     background-image: url('banner.png');
     background-size: cover;
@@ -56,6 +58,7 @@ h2 {
     border-bottom: 2px solid #8be9fd;
     padding-bottom: 10px;
 }
+
 .section {
     background-color: #1e1e1e;
     border-radius: 8px;
@@ -63,34 +66,42 @@ h2 {
     margin-bottom: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .social-links {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
 }
+
 .social-links a {
     display: inline-block;
     transition: transform 0.3s ease;
 }
+
 .social-links img {
     width: 40px;
-    height: auto; 
+    height: auto;
 }
+
 .social-links a:hover {
     transform: translateY(-5px);
 }
+
 a {
     color: #8b0000;
     text-decoration: none;
     transition: color 0.3s ease;
 }
+
 a:hover {
     color: #a52a2a;
 }
+
 p {
     margin-bottom: 15px;
 }
+
 .subdomain-button {
     display: inline-block;
     background-color: #8b0000;
@@ -111,3 +122,50 @@ p {
     transform: translateY(-3px);
 }
 
+/* New Layout for feeds */
+.layout {
+    display: flex;
+    gap: 20px;
+}
+
+.feed {
+    flex: 1;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    max-width: 250px;
+}
+
+.main-content {
+    flex: 2;
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feed h3 {
+    font-size: 1.5rem;
+    color: #8be9fd;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #8be9fd;
+    padding-bottom: 10px;
+}
+
+.feed p, .feed img {
+    margin-top: 10px;
+}
+
+.feed img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Optional: Mobile responsive */
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column;
+    }
+}
