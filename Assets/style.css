@@ -122,7 +122,6 @@ p {
     transform: translateY(-3px);
 }
 
-/* New Layout for feeds */
 .layout {
     display: flex;
     gap: 20px;
@@ -163,7 +162,6 @@ p {
     border-radius: 8px;
 }
 
-/* Optional: Mobile responsive */
 @media (max-width: 768px) {
     .layout {
         flex-direction: column;
