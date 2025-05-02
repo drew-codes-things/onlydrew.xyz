@@ -6,6 +6,7 @@
     <title>Starlover's Realm</title>
     <link rel="icon" href="Assets/icon.png" type="image/png">
     <link rel="stylesheet" href="Assets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
@@ -20,69 +21,64 @@
 
     <div class="container">
         <div class="layout">
-
             <div class="feed">
                 <h3>Recent Activities</h3>
                 <p id="update-info">🖊️ Loading update info...</p>
                 <p>Integration enroute</p>
             </div>
 
-        </div>
-    </div>
+            <div class="main-content">
+                <div class="section">
+                    <h2>About Me</h2>
+                    <p>Hi, I'm <strong>starlover</strong> — welcome to my little corner of the internet!<br>
+                    I’ve created this site to share the tools and things I’ve built that have made life easier for me, and hopefully for you too. You can explore everything through the catalogue above.</p>
+                    
+                    <p><strong>A bit about me:</strong><br>
+                    I love my girlfriend deeply — she's not only my favorite person but also my favorite artist, right alongside Lana Del Rey.</p>
+                    
+                    <p>I’ve spent a lot of time playing games like <a href="https://www.fortnite.com" target="_blank">Fortnite</a>, though I’ve moved on from it recently. These days, I’m more into <a href="https://www.minecraft.net" target="_blank">Minecraft</a> and love the creativity it brings.</p>
+                </div>
 
-    <div class="main-content">
-        <div class="section">
-            <h2>About Me</h2>
-            <p>Hi, I'm <strong>starlover</strong> — welcome to my little corner of the internet!<br>
-                I’ve created this site to share the tools and things I’ve built that have made life easier for me, and hopefully for you too. You can explore everything through the catalogue above.</p>
-                
-                <p><strong>A bit about me:</strong><br>
-                I love my girlfriend deeply — she's not only my favorite person but also my favorite artist, right alongside Lana Del Rey.</p>
-                
-                <p>I’ve spent a lot of time playing games like <a href="https://www.fortnite.com" target="_blank">Fortnite</a>, though I’ve moved on from it recently. These days, I’m more into <a href="https://www.minecraft.net" target="_blank">Minecraft</a> and love the creativity it brings.</p>
-                
-        </div>
+                <div class="section">
+                    <h2>Socials and contacts</h2>
+                    <div class="social-links">
+                        <a href="https://discord.com/users/981991824510054450" target="_blank" aria-label="Discord">
+                            <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6ca814282eca7172c6_icon_clyde_white_RGB.svg" alt="Discord">
+                        </a>
+                        <a href="https://github.com/Starlover0104" target="_blank" aria-label="GitHub">
+                            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCetjAEAeb773xck1AAJmvUQ" target="_blank" aria-label="YouTube">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube">
+                        </a>
+                        <a href="mailto:starlover@starlover.online" target="_blank" aria-label="Email">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/2560px-Gmail_icon_%282020%29.svg.png" alt="Email">
+                        </a>
+                    </div>
+                </div>
 
-        <div class="section">
-            <h2>Socials and contacts</h2>
-            <div class="social-links">
-                <a href="https://discord.com/users/981991824510054450" target="_blank" aria-label="Discord">
-                    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6ca814282eca7172c6_icon_clyde_white_RGB.svg" alt="Discord">
-                </a>
-                <a href="https://github.com/Starlover0104" target="_blank" aria-label="GitHub">
-                    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
-                </a>
-                <a href="https://www.youtube.com/channel/UCetjAEAeb773xck1AAJmvUQ" target="_blank" aria-label="YouTube">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube">
-                </a>
-                <a href="mailto:starlover@starlover.online" target="_blank" aria-label="Email">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/2560px-Gmail_icon_%282020%29.svg.png" alt="Email">
-                </a>
+                <div class="section">
+                    <h2>Featured</h2>
+                    <p>❤️ Me and my girlfriend ❤️</p>
+                    <img src="Assets/us.jpg" alt="Girlfriend" style="width:100%; border-radius:8px;">
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="feed">
-        <h3>Featured</h3>
-        <p>❤️ Me and my girlfriend ❤️</p>
-        <img src="Assets/us.jpg" alt="Girlfriend">
-    </div>
-
     <script>
-        const repoOwner = "starlover0104"; 
-        const repoName = "Starlover.online"; 
-    
+        const repoOwner = "starlover0104";
+        const repoName = "Starlover.online";
+
         fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/commits`)
             .then(response => response.json())
             .then(data => {
                 const latestCommit = data[0];
                 const commitDate = new Date(latestCommit.commit.author.date);
-                const formattedDate = commitDate.toLocaleDateString('en-GB'); 
-                const commitMessage = latestCommit.commit.message;
+                const formattedDate = commitDate.toLocaleDateString('en-GB');
                 document.getElementById('update-info').textContent = `🖊️ Last updated on ${formattedDate}, file type: .html`;
             })
             .catch(error => {
-                console.error("Error fetching commit data:", error);
                 document.getElementById('update-info').textContent = "🖊️ Unable to fetch update info.";
             });
     </script>
