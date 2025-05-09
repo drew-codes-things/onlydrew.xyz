@@ -72,11 +72,12 @@
                     hour: '2-digit', minute: '2-digit'
                 });
 
-                const message = commit.commit.message.split('\n')[0]; 
+                const message = commit.commit.message.split('\n')[0]; // first line of commit message
                 const files = commitDetails.files.map(file => file.filename).join(', ');
 
                 const li = document.createElement('li');
-                li.textContent = `🖊️ ${formattedDate} – ${message} (Files: ${files})`;
+                li.style.paddingLeft = '20px'; // indent
+                li.textContent = `🖊️ ${formattedDate} – ${message} (${files})`;
                 list.appendChild(li);
             }
         } catch (error) {
@@ -86,7 +87,5 @@
 
     fetchCommitsWithFiles();
 </script>
-
-
 </body>
 </html>
