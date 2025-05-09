@@ -123,27 +123,33 @@ p {
 }
 
 .layout {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
     gap: 20px;
     flex-wrap: wrap;
 }
 
 .feed {
-    flex: 1;
     background-color: #1e1e1e;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     min-width: 200px;
-    max-width: 250px;
 }
 
 .main-content {
-    flex: 2;
     background-color: #1e1e1e;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about {
+    text-align: center;
+}
+
+.socials {
+    min-width: 200px;
 }
 
 .feed h3 {
@@ -154,17 +160,8 @@ p {
     padding-bottom: 10px;
 }
 
-.feed p, .feed img {
-    margin-top: 10px;
-}
-
-.feed img {
-    width: 100%;
-    border-radius: 8px;
-}
-
 @media (max-width: 768px) {
     .layout {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
 }
