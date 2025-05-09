@@ -67,6 +67,13 @@ h2 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
 .social-links {
     display: flex;
     flex-direction: column;
@@ -121,12 +128,6 @@ p {
     transform: translateY(-3px);
 }
 
-.layout {
-    display: grid;
-    grid-template-columns: 1.5fr 3fr 1.5fr;
-    gap: 30px;
-}
-
 ul {
     padding-left: 20px;
 }
@@ -139,5 +140,10 @@ ul li {
 @media (max-width: 768px) {
     .layout {
         grid-template-columns: 1fr;
+    }
+
+    .social-links {
+        flex-direction: row;
+        justify-content: center;
     }
 }
