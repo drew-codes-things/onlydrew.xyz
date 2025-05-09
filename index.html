@@ -28,16 +28,16 @@
                 </ul>
             </div>
 
-            <div class="main-content section">
+            <div class="section main-content">
                 <h2>About Me</h2>
                 <p>Hi, I'm <strong>starlover</strong> — welcome to my little corner of the internet!</p>
-                <p>I’ve created this site to share the tools and things I’ve built that have made life easier for me, and hopefully for you too. You can explore everything through the catalogue above.</p>
+                <p>I've created this site to share the tools and things I've built that have made life easier for me, and hopefully for you too. You can explore everything through the catalogue above.</p>
                 <p><strong>A bit about me:</strong><br>
                 I love my girlfriend deeply — she's not only my favorite person but also my favorite artist, right alongside Lana Del Rey.</p>
-                <p>I’ve spent a lot of time playing games like <a href="https://www.fortnite.com" target="_blank">Fortnite</a>, though I’ve moved on from it recently. These days, I’m more into <a href="https://www.minecraft.net" target="_blank">Minecraft</a> and love the creativity it brings.</p>
+                <p>I've spent a lot of time playing games like <a href="https://www.fortnite.com" target="_blank">Fortnite</a>, though I've moved on from it recently. These days, I'm more into <a href="https://www.minecraft.net" target="_blank">Minecraft</a> and love the creativity it brings.</p>
             </div>
 
-            <div class="section">
+            <div class="section enquiries">
                 <h2>Enquiries</h2>
                 <div class="social-links">
                     <a href="https://github.com/Starlover0104" target="_blank" aria-label="GitHub">
@@ -51,60 +51,93 @@
         </div>
     </div>
 
-<script>
-    const repos = [
-        { owner: "starlover0104", name: "Starlover.online" },
-        { owner: "starlover0104", name: "EmbedFormat" },
-        { owner: "starlover0104", name: "MessageSender" } 
-    ];
+    <script>
+        const repoOwner = "starlover0104";
+        const repos = [
+            { owner: "starlover0104", name: "Starlover.online" },
+            { owner: "starlover0104", name: "EmbedFormat" },
+            { owner: "starlover0104", name: "MessageSender" } 
+        ];
 
-    async function fetchCommitsFromAllRepos() {
-        const list = document.getElementById('update-info-list');
-        list.innerHTML = '';
+        async function fetchCommitsFromAllRepos() {
+            const list = document.getElementById('update-info-list');
+            list.innerHTML = '';
 
-        try {
-            const allCommits = [];
+            try {
+                const allCommits = [];
 
-            for (const repo of repos) {
-                const response = await fetch(`https://api.github.com/repos/${repo.owner}/${repo.name}/commits`);
-                const commits = await response.json();
+                for (const repo of repos) {
+                    try {
+                        const response = await fetch(`https://api.github.com/repos/${repo.owner}/${repo.name}/commits`);
+                        if (!response.ok) {
+                            throw new Error(`Failed to fetch commits for ${repo.name}`);
+                        }
+                        
+                        const commits = await response.json();
 
-                const detailedCommits = await Promise.all(
-                    commits.slice(0, 3).map(async commit => {
-                        const commitDetails = await fetch(commit.url).then(res => res.json());
-                        return {
-                            date: new Date(commit.commit.author.date),
-                            message: commit.commit.message.split('\n')[0],
-                            files: commitDetails.files.map(file => file.filename).join(', '),
+                        const detailedCommits = await Promise.all(
+                            commits.slice(0, 3).map(async commit => {
+                                try {
+                                    const commitResponse = await fetch(commit.url);
+                                    if (!commitResponse.ok) {
+                                        throw new Error(`Failed to fetch commit details`);
+                                    }
+                                    
+                                    const commitDetails = await commitResponse.json();
+                                    
+                                    return {
+                                        date: new Date(commit.commit.author.date),
+                                        message: commit.commit.message.split('\n')[0], 
+                                        files: commitDetails.files.map(file => file.filename).join(', '),
+                                        repo: repo.name
+                                    };
+                                } catch (detailError) {
+                                    console.error(`Error fetching details for commit in ${repo.name}:`, detailError);
+                                    return {
+                                        date: new Date(commit.commit.author.date),
+                                        message: commit.commit.message.split('\n')[0],
+                                        files: "Info unavailable",
+                                        repo: repo.name
+                                    };
+                                }
+                            })
+                        );
+
+                        allCommits.push(...detailedCommits);
+                    } catch (repoError) {
+                        console.error(`Error fetching commits for ${repo.name}:`, repoError);
+                        allCommits.push({
+                            date: new Date(),
+                            message: `Failed to fetch commits`,
+                            files: "N/A",
                             repo: repo.name
-                        };
-                    })
-                );
+                        });
+                    }
+                }
 
-                allCommits.push(...detailedCommits);
-            }
+                allCommits.sort((a, b) => b.date - a.date);
 
-            allCommits.sort((a, b) => b.date - a.date);
+                allCommits.slice(0, 5).forEach(commit => {
+                    const formattedDate = commit.date.toLocaleString('en-GB', {
+                        day: '2-digit', month: '2-digit', year: '2-digit',
+                        hour: '2-digit', minute: '2-digit'
+                    });
 
-            allCommits.slice(0, 5).forEach(commit => {
-                const formattedDate = commit.date.toLocaleString('en-GB', {
-                    day: '2-digit', month: '2-digit', year: '2-digit',
-                    hour: '2-digit', minute: '2-digit'
+                    const li = document.createElement('li');
+                    li.style.paddingLeft = '20px';
+                    li.style.marginBottom = '15px';
+                    li.textContent = `🖊️ ${formattedDate} – ${commit.message} (${commit.files}) [${commit.repo}]`;
+                    list.appendChild(li);
                 });
 
-                const li = document.createElement('li');
-                li.style.paddingLeft = '20px';
-                li.style.marginBottom = '15px';
-                li.textContent = `🖊️ ${formattedDate} – ${commit.message} (${commit.files}) [${commit.repo}]`;
-                list.appendChild(li);
-            });
-
-        } catch (error) {
-            list.innerHTML = "<li>🖊️ Unable to fetch update info.</li>";
+            } catch (error) {
+                console.error("Error in fetchCommitsFromAllRepos:", error);
+                list.innerHTML = "<li style='padding-left:20px;'>🖊️ Unable to fetch update info.</li>";
+            }
         }
-    }
 
-    fetchCommitsFromAllRepos();
-</script>
+        window.addEventListener('DOMContentLoaded', fetchCommitsFromAllRepos);
+    </script>
+
 </body>
 </html>
