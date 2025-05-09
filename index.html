@@ -51,31 +51,42 @@
         </div>
     </div>
 
-    <script>
-        const repoOwner = "starlover0104";
-        const repoName = "Starlover.online";
+<script>
+    const repoOwner = "starlover0104";
+    const repoName = "Starlover.online";
 
-        fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/commits`)
-            .then(response => response.json())
-            .then(data => {
-                const list = document.getElementById('update-info-list');
-                list.innerHTML = '';
-                data.slice(0, 5).forEach(commit => {
-                    const date = new Date(commit.commit.author.date);
-                    const formatted = date.toLocaleString('en-GB', {
-                        day: '2-digit', month: '2-digit', year: '2-digit',
-                        hour: '2-digit', minute: '2-digit'
-                    });
-                    const fileName = "index.html"; 
-                    const li = document.createElement('li');
-                    li.textContent = `🖊️ ${formatted} – ${fileName}`;
-                    list.appendChild(li);
+    async function fetchCommitsWithFiles() {
+        try {
+            const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/commits`);
+            const commits = await response.json();
+            const list = document.getElementById('update-info-list');
+            list.innerHTML = '';
+
+            const recentCommits = commits.slice(0, 5);
+
+            for (const commit of recentCommits) {
+                const commitDetails = await fetch(commit.url).then(res => res.json());
+                const date = new Date(commit.commit.author.date);
+                const formattedDate = date.toLocaleString('en-GB', {
+                    day: '2-digit', month: '2-digit', year: '2-digit',
+                    hour: '2-digit', minute: '2-digit'
                 });
-            })
-            .catch(() => {
-                document.getElementById('update-info-list').innerHTML = "<li>🖊️ Unable to fetch update info.</li>";
-            });
-    </script>
+
+                const message = commit.commit.message.split('\n')[0]; 
+                const files = commitDetails.files.map(file => file.filename).join(', ');
+
+                const li = document.createElement('li');
+                li.textContent = `🖊️ ${formattedDate} – ${message} (Files: ${files})`;
+                list.appendChild(li);
+            }
+        } catch (error) {
+            document.getElementById('update-info-list').innerHTML = "<li>🖊️ Unable to fetch update info.</li>";
+        }
+    }
+
+    fetchCommitsWithFiles();
+</script>
+
 
 </body>
 </html>
