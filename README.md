@@ -1,7 +1,7 @@
 # Drew's Website
 
 - My website is deployed here: [here](https://starlover.online), feel free to check it out!
-- HUGE WEBSITE UPDATES COMING SOON, INCLUDING NEW DOMAIN NAME.
+- HUGE WEBSITE UPDATES COMING SOON.
 
 ## Features
 - There is a direct link to my subdomain that reaches through a subdirectory first to give you a choice of what you want to access
