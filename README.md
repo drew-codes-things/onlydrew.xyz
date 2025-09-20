@@ -8,6 +8,5 @@
 - Some of my socials are linked at the bottom of the main site including my issue contact as an email
 - Included there is a brief about me section explaining some of my interests
 
-## Issues
-Contact me via <a href="mailto:support@starlover.online">support@starlover.online</a> in a case of any issues with an image and explanation
+
 
