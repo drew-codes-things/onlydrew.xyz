@@ -1,12 +1,10 @@
 # Drew's Website
 
-- My website is deployed here: [here](https://starlover.online), feel free to check it out!
-- HUGE WEBSITE UPDATES COMING SOON.
+- My website is deployed here: [here](https://onlydrew.xyz), feel free to check it out!
 
 ## Features
-- There is a direct link to my subdomain that reaches through a subdirectory first to give you a choice of what you want to access
-- Some of my socials are linked at the bottom of the main site including my issue contact as an email
-- Included there is a brief about me section explaining some of my interests
+- There is a direct button that reaches through a subfolder first to give you a choice of what you want to access from my tools.
+
 
 
 
